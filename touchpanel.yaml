@@ -1,0 +1,180 @@
+# Insert your SSID and Your PWD after inital setup
+wifi:
+  networks:
+   - ssid: 'REPLACEME'          # Enter your WiFi SSID here. Example: `ssid: 'your_network_name'`
+     password: 'REPLACEME'      # Enter your wifi password here. Example: `password: 'abcde123456'`
+  # manual_ip:
+  #   static_ip: 192.168.2.165
+  #   gateway: 192.168.2.2
+  #   subnet: 255.255.255.0
+
+  ap:
+    ssid: ${devicename}
+
+# Enable the captive portal for inital WiFi setup
+captive_portal:
+
+
+
+substitutions:
+  devicename: touchpanel
+  friendly_name: TouchPanel
+
+esphome:
+  name: $devicename
+  platform: ESP8266
+  board: nodemcuv2
+
+  # Automatically add the mac address to the name
+  # so you can use a single firmware for all devices
+  name_add_mac_suffix: true
+
+  # This will allow for (future) project identification,
+  # configuration and updates.
+  project:
+    name: jagr.touch_panel
+    version: "0.1"
+
+  on_boot:
+    priority: -10
+    then:
+    - wait_until:
+        api.connected:
+    - logger.log: API is connected!
+    - rtttl.play: "success:d=24,o=5,b=100:c,g,b"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  services:
+  - service: ok
+    then:
+    - rtttl.play: "beep:d=16,o=5,b=100:b"
+
+  - service: ko
+    then:
+    - rtttl.play: "beep:d=8,o=5,b=100:b"
+
+  - service: play_rtttl
+    variables:
+      song_str: string
+    then:
+    - rtttl.play: !lambda 'return song_str;'
+
+ota:
+
+i2c:
+  sda: D3
+  scl: D2
+
+
+mpr121:
+  id: mpr121_component
+  touch_threshold: 8
+  release_threshold: 7
+binary_sensor:
+  - platform: mpr121
+    id:  touch_key0
+    channel: 0
+    name: "${friendly_name} Touch Key 0"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=5,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key1
+    channel: 1
+    name: "${friendly_name} Touch Key 1"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key2
+    channel: 2
+    name: "${friendly_name} Touch Key 2"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key3
+    channel: 3
+    name: "${friendly_name} Touch Key 3"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key4
+    channel: 4
+    name: "${friendly_name} Touch Key 4"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key5
+    channel: 5
+    name: "${friendly_name} Touch Key 5"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key6
+    channel: 6
+    name: "${friendly_name} Touch Key 6"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key7
+    channel: 7
+    name: "${friendly_name} Touch Key 7"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key8
+    channel: 8
+    name: "${friendly_name} Touch Key 8"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key9
+    channel: 9
+    name: "${friendly_name} Touch Key 9"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key10
+    channel: 10
+    name: "${friendly_name} Touch Key 10"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+  - platform: mpr121
+    id: touch_key11
+    channel: 11
+    name: "${friendly_name} Touch Key 11"
+    on_press:
+      then:
+        - rtttl.play:
+            rtttl: "short:d=4,o=4,b=1000:16e6"
+output:
+  - platform: esp8266_pwm
+    pin: D5
+    id: rtttl_out
+
+rtttl:
+  output: rtttl_out
