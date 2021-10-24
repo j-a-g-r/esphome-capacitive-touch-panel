@@ -33,7 +33,7 @@ Secondly, this is the first "thing" that I created myself and published, also I 
 - buzzer
 - MPR121 Breakout
 - Logic module & Front panel PCB
-- Glass / Acrylic Glass
+- Glass / Acrylic Glass 100 x 100 x 2 mm
 - 12 Header pins
 
 ### PCBs
