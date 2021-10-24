@@ -8,7 +8,7 @@
 A DIY capacitive touch panel based on the mpr121. Consisting of two PCBs, the main PCB where all the logic is located such as the mpr121, an esp8266, a buzzer, and one PCB where the buttons are located. Both are connected using 12 pin headers.
 
 # construction
-<img src="/docs/images/construction.png" alt="construction" width="48%">#
+<img src="/docs/images/construction.png" alt="construction" width="48%">
 
 ### Front panel PCB
 <img src="/pcb/front panel/front panel_2021-10-22.svg" alt="construction" width="48%">
