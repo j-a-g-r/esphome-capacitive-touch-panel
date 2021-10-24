@@ -51,3 +51,5 @@ If you are designing your own front panel PCB, I would be happy if you would sha
 <img src="/docs/images/3.jpg" alt="3d render" width="48%">
 <img src="/docs/images/4.jpg" alt="3d render" width="48%">
 </p>
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/X8X26OSL2)
