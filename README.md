@@ -1,5 +1,6 @@
 # esphome-capacitive-touch-panel
+<p float="left">
 
-
-![capacitive-touch-panel_3d](/docs/images/capacitive-touch-panel_3d.png)
-![gif](/docs/images/touch-panel.gif) 
+<img src="/docs/images/capacitive-touch-panel_3d.png" alt="3d render" width="48%">
+<img src="/docs/images/touch-panel.gif" alt="3d render" width="48%">
+</p>
